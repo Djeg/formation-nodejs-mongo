@@ -1,1 +1,1 @@
-console.log('Coucou les amis')
+console.log(process.env.NODE_ENV)
