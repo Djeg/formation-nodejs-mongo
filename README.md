@@ -17,7 +17,8 @@ la votre afin de retrouver l'intégralité des cours, codes et supports
 - Créer des api rest avec fastify
 - Découvrir mongodb
 - Faire des tests
-- Arhitecture d'une application fastify
+- Architecture d'une application fastify
+- Sécurité : JWT et CORS
 - Déployer son application nodejs / mongodb avec heroku
 
 ## La pratique

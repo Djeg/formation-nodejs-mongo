@@ -55,3 +55,11 @@ Nous pouvons accéder à n'importe quelle configuration n'importe ou dans notre 
 ```ts
 process.env.NOM_DE_LA_VARIABLE_ENVIRONEMENT
 ```
+
+### Attention au versionnement !
+
+Il est **formellement déconseillé voir même très dangereux** de partager sur github votre fichier de configuration `.env`. Il est donc conseillé de s'organiser de cette manière :
+
+1. On ignore le fichier `.env` dans le `.gitignore`
+2. On créé un fichier **d'éxemple** `.env.dist` contenant les exemples de toutes les valeurs de configuration. Attention aucune informations sensible ne doit être présent dans ce fichier `.env.dist`
+3. Lors de l'installation du projet, il nous faudra copié `.env.dist` en `.env` et éditer les valeurs de configuration

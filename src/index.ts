@@ -1,1 +1,3 @@
-console.log(process.env.NODE_ENV)
+console.log(
+  `Bonjour ${process.env.FIRSTNAME} ${process.env.LASTNAME}, comment allez-vous ?`,
+)
