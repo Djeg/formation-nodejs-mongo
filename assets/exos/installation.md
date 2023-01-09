@@ -27,3 +27,5 @@ Dans le fichier `package.json` ajouter les commandes suivantes :
 - "build" : Cette commande doit compiler tout le code typescript dans un dossier `dist`
 - "start" : Cette commande lance le fichier compilé par typescript `dist/index.js`
 - "start:dev" : Cette commande utilise `ts-node` et compile + lance le fichier `src/index.ts`
+
+> A la fin mettre votre code sur github
