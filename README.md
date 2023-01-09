@@ -11,7 +11,7 @@ la votre afin de retrouver l'intégralité des cours, codes et supports
 
 ## Le plan
 
-- Présentation et installation
+- [Présentation et installation](./assets/cours/presentation.md)
 - Configuration avec nodemon & dotenv
 - Découvrir fastify
 - Créer des api rest avec fastify
