@@ -7,4 +7,4 @@ la votre afin de retrouver l'intégralité des cours, codes et supports
 
 ## Les sessions :
 
-- [Session du 09/01/3 au 13/01/23]()
+- [Session du 09/01/3 au 13/01/23](https://github.com/Djeg/formation-nodejs-mongo/tree/session/09-01-23/13-01-23)
