@@ -5,7 +5,7 @@ Dans cette formation vous apprendrez à créer des api web en utilisant nodejs e
 Ce repository est organisé en session, chaque session correspond à une semaine de formation, choisisez
 la votre afin de retrouver l'intégralité des cours, codes et supports
 
-# Les supports
+## Les supports
 
 - [Lien vers les slides de la formation](https://slides.com/davidjegat-1/nodejs-mongodb/fullscreen)
 
@@ -20,6 +20,6 @@ la votre afin de retrouver l'intégralité des cours, codes et supports
 - Arhitecture d'une application fastify
 - Déployer son application nodejs / mongodb avec heroku
 
-# La pratique
+## La pratique
 
 - [Créer son projet nodejs](./assets/exos/installation.md)
