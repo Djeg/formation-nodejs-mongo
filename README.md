@@ -23,3 +23,4 @@ la votre afin de retrouver l'intégralité des cours, codes et supports
 ## La pratique
 
 - [Créer son projet nodejs](./assets/exos/installation.md)
+- [Configurer nodemon et dotenv](./assets/exos/nodemon-dotenv.md)
