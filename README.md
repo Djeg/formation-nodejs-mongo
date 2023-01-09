@@ -19,3 +19,7 @@ la votre afin de retrouver l'intégralité des cours, codes et supports
 - Faire des tests
 - Arhitecture d'une application fastify
 - Déployer son application nodejs / mongodb avec heroku
+
+# La pratique
+
+- [Créer son projet nodejs](./assets/exos/installation.md)
