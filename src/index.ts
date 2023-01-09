@@ -1,1 +1,1 @@
-console.log('Coucou de la part de typescript')
+console.log('Coucou les amis')
