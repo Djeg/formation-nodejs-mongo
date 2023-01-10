@@ -8,7 +8,8 @@
     "build": "tsc",
     "start": "node -r dotenv/config dist/index.js",
     "start:dev": "ts-node -r dotenv/config src/index.ts",
-    "start:demon": "nodemon -e .ts,.js,.json -w src -x \"npm run start:dev\""
+    "start:demon": "nodemon -e .ts,.js,.json -w src -x \"npm run start:dev\"",
+    "start:calculator": "nodemon -e .ts,.js,.json -w src -x \"ts-node -r dotenv/config src/exos/calculatrice.ts\""
   },
   "repository": {
     "type": "git",

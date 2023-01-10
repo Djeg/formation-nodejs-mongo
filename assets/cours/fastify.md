@@ -65,6 +65,9 @@ De base un serveur http ne fais rien du tout, pour ajouter des « actions » à 
 app.get('/', () => {
   return 'Bonjour les amis'
 })
+app.post('/', () => { ... })
+app.delete('/', () => { ... })
+
 ```
 
 #### Les paramètres de routes
