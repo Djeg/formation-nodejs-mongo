@@ -207,7 +207,7 @@ Pour personnaliser le status :
 ```ts
 app.get('/test', (request, response) => {
   // Pour personnaliser le status, nous utilisons la réponse :
-  response.status(400)
+  response.code(400)
 
   return 'Une erreur est survenue'
 })
