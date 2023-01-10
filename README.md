@@ -13,7 +13,7 @@ la votre afin de retrouver l'intégralité des cours, codes et supports
 
 - [Présentation et installation](./assets/cours/presentation.md)
 - [Configuration avec nodemon & dotenv](./assets/cours/nodemon-dotenv.md)
-- Découvrir fastify
+- [Découvrir fastify](./assets/cours/fastify.md)
 - Créer des api rest avec fastify
 - Découvrir mongodb
 - Faire des tests
