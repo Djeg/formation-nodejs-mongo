@@ -161,6 +161,19 @@ app.get<SalutRoute>('/bonjour/:name', request => {
 })
 ```
 
+### Request & Reply
+
+En fastify il éxiste 2 paramètre envoyé à la fonction de traitement d'une route :
+
+- [La request](https://www.fastify.io/docs/latest/Reference/Request/)
+- [La Reply](https://www.fastify.io/docs/latest/Reference/Reply/)
+
+Ces deux paramètres permettent de récupérer les informations relative à la Request envoyé par le client et personnaliser la réponse du serveur (reply).
+
+Il est possible de récupérer tout un tas d'informations ainsi que de personnaliser notre réponse en utilisant ces deux objets correctement
+
+> Nous avons dèja vu plus haut comment utiliser la request ! Nous avons aussi utiliser un générique afin de typer les données de la request. Dans ce généric nous pouvons aussi personnaliser d'autre données comme les Querystring, Body, Headers, Params mais aussi la Reply : https://www.fastify.io/docs/latest/Reference/TypeScript/#getting-started
+
 #### Les query string
 
 Il est aussi possible de « typer » et manipuler des query string (filtres) :
