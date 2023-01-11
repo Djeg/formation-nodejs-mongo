@@ -47,4 +47,5 @@ nous devons spécifier un querystring avec l'opération (`div`, `mul`, `sub` et 
 
 1. Créer un fichier `request.http` à la racine de votre projet (vous pouvez inspirer du fichier [dèja existant](../../request.http))
 
-2. Dans ce fichier créer une requête pour opération de notre calculatrice !
+2. Dans ce fichier créer
+   une requête pour opération de notre calculatrice !

@@ -5,6 +5,20 @@ Dans cette formation vous apprendrez à créer des api web en utilisant nodejs e
 Ce repository est organisé en session, chaque session correspond à une semaine de formation, choisisez
 la votre afin de retrouver l'intégralité des cours, codes et supports
 
+## Installer et démarrer ce projet
+
+Pour installer ce projet commencer par le télécharger ou le cloner. Une fois extrait sur votre machine, ouvrez VSCode à la racine du projet et suivez les étapes suivantes :
+
+- Copier/Coller le fichier `.env.dist` dans `.env` et éditer les valeurs de configuration avec celle de votre choix
+- Lancer les commandes suivantes :
+
+```bash
+# Installe les node_modules
+npm i
+# Démarre le serveur :
+npm run start:demonc
+```
+
 ## Les supports
 
 - [Lien vers les slides de la formation](https://slides.com/davidjegat-1/nodejs-mongodb/fullscreen)
@@ -26,7 +40,3 @@ la votre afin de retrouver l'intégralité des cours, codes et supports
 - [Créer son projet nodejs](./assets/exos/installation.md)
 - [Configurer nodemon et dotenv](./assets/exos/nodemon-dotenv.md)
 - [Exercice de calculatrice](./assets/exos/calculator.md)
-
-```bash
-npm i fastify
-```
