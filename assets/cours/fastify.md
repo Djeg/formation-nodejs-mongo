@@ -228,3 +228,165 @@ app.get('/test', (request, response) => {
   return 'Une erreur est survenue'
 })
 ```
+
+## Le format JSON
+
+Lorsque l'on souhaite échanger des données entre un client et un serveur, le format de prédilection est JSON. Simple, lisible, léger c'est le plus répandu au monde (anciennement c'était le `xml`).
+
+Voici un exemple de fichier json :
+
+### Les string
+
+```json
+"Coucou les amis"
+```
+
+> Très similaire à javascript sauf attention, uniquement les guillemets double sont valide !
+
+### Les numbers
+
+```json
+12
+12.5
+-56
+```
+
+### Les boolean
+
+```json
+true
+false
+```
+
+### Les array
+
+```json
+["coucou", "les", "amis", 12, false]
+```
+
+### Les objets
+
+```json
+{
+  "nom": "Doe",
+  "prenom": "John",
+  "age": 32
+}
+```
+
+> En json les guillemets sont obligatoire pour les clefs de vos objets !
+
+### Exemple de json une fiche de présence :
+
+```json
+{
+  "AMIN Ali": {
+    "email": "....",
+    "presence": {
+      "lundi": {
+        "matin": "P",
+        "après midi": "P"
+      },
+      "mardi": {
+        "matin": "P",
+        "après midi": "P"
+      },
+      "mercredi": {
+        "matin": "P",
+        "après midi": "P"
+      }
+    }
+  }
+}
+```
+
+## Transmettre des données à notre serveur
+
+Lorsque l'on fais des requêtes HTTP à un serveur nous dévons spécifier une méthode HTTP :
+
+- GET : Obtenir
+- POST : Créer
+- DELETE : Effacer
+- PATCH : Modifier une partie
+- PUT : Modifier l'intégralité
+
+Certaines de ses actions pour s'éxécuter doivent envoyer de la données à notre serveur ! C'est le cas des actions `POST`, `PATCH` et `PUT`.
+
+Pour envoyer des données en utilisant le format JSON il faut, dans notre requête HTTP spécifier un en-tête `Content-Type`. Cet en-tête http accépte un `MIME Type` qui est `application/json`
+
+```http
+POST http://monserver.com/articles
+Content-Type: application/json
+
+{
+  "title": "Mon voyage en espagne",
+  "description": "Super voyage ...",
+  "content": "lorem ipsum dolor sit amet ..."
+}
+```
+
+### Récupérer ses données dans notre route fastify
+
+Pour récupérer les données json envoyé par un client il faut utiliser le `request.body` (par éxemple, je souhaite récupérer le title envoyé en json : `request.body.title`).
+
+**Attention !** En typescript ce `request.body` doit être typé !
+
+```ts
+import fastify from 'fastify'
+
+const app = fastify()
+
+// Type contenant la définition des Params, Querystring mais aussi le body
+type CreateArticleRoute = {
+  Body: {
+    title: string
+    description: string
+    content: string
+  }
+}
+
+// Création d'une route post pour ajouter un nouvelle article
+app.post<CreateArticleRoute>('/articles', request => {
+  // Récupérer le titre de mon article
+  const title = request.body.title
+
+  // Enregistrer l'article dans une base de données (par éxemple MongoDB) ...
+})
+
+app.listen(....)
+```
+
+### Comprendre le généric envoyé à la route
+
+Un route à besoin d'un type générique afin de définir ce que contient la request et plus spécifiquement les éléments suivant :
+
+```ts
+// Type permettant de dire à typescript ce que contient une request
+type MaRoute = {
+  // Définie ce ques contient les Params de la route
+  Params: {
+    id: string
+  }
+  // Définie ce que contient les Querystring de la route
+  Querystring: {
+    orderBy: string
+  }
+  // Définie ce que contient le body de la route
+  Body: {
+    title: string
+  }
+  // Définie les en-tête http que doit contenir notre request
+  Headers: {
+    'Content-Type': string
+  }
+}
+
+app.get<MaRoute>('/test', request => {
+  // Ici request.params doit contenir MaRoute['Params']
+  console.log(request.params) // { id: '...' }
+  // request.query doit contenir MaRoute['Querystring']
+  console.log(request.query) // { orderBy: '...' }
+  console.log(request.body) // { title: '...' }
+  console.log(request.headers) // { "Content-Type": '.....' }
+})
+```

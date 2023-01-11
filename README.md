@@ -28,8 +28,8 @@ npm run start:demon
 - [Présentation et installation](./assets/cours/presentation.md)
 - [Configuration avec nodemon & dotenv](./assets/cours/nodemon-dotenv.md)
 - [Découvrir fastify](./assets/cours/fastify.md)
-- Créer des api rest avec fastify
 - Découvrir mongodb
+- Créer des api rest avec fastify
 - Faire des tests
 - Architecture d'une application fastify
 - Sécurité : JWT et CORS
@@ -40,3 +40,4 @@ npm run start:demon
 - [Créer son projet nodejs](./assets/exos/installation.md)
 - [Configurer nodemon et dotenv](./assets/exos/nodemon-dotenv.md)
 - [Exercice de calculatrice](./assets/exos/calculator.md)
+- [Exercice manipulation de fastify](./assets/exos/manipuler-fastify.md)
