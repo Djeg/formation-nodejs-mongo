@@ -42,3 +42,9 @@ Créer une route en méthode `GET` permettant d'éxécuter un calcul. Cette rout
 nous devons spécifier un querystring avec l'opération (`div`, `mul`, `sub` et `add`).
 
 > Vous pouvez tester cette route en utilisant votre navigateur et en vous rendant sur votre serveur à la route donnée.
+
+### Tester la calculatrice avec l'extension REST Client
+
+1. Créer un fichier `request.http` à la racine de votre projet (vous pouvez inspirer du fichier [dèja existant](../../request.http))
+
+2. Dans ce fichier créer une requête pour opération de notre calculatrice !
