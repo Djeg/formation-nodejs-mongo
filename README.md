@@ -16,7 +16,7 @@ Pour installer ce projet commencer par le télécharger ou le cloner. Une fois e
 # Installe les node_modules
 npm i
 # Démarre le serveur :
-npm run start:demonc
+npm run start:demon
 ```
 
 ## Les supports
