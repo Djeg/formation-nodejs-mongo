@@ -120,13 +120,43 @@ console.log(displayNotes(john.notes))
 
 // Créer une fonction moyenne qui accépte un tableaux de notes et retourne la moyenne
 // de toutes les notes
+const moyenne = (notes: number[]) =>
+  notes.reduce((acc, note) => acc + note, 0) / notes.length
+
+console.log(moyenne(john.notes))
 
 // Créer un type ProfPrincipal qui peut être soit :
 // une chaine de caractère
 // un objet avec les champs suivant : { nom: string, prenom: string, matiere: string }
+type ProfPrincipal =
+  | string
+  | {
+      nom: string
+      prenom: string
+      matiere: string
+    }
+
+const rose: ProfPrincipal = 'Rose Doe, mathématique'
+const jean: ProfPrincipal = {
+  nom: 'Dupont',
+  prenom: 'Jean',
+  matiere: 'francais',
+}
 
 // Créer un type Identifiable qui accépte un générique et produit le type suivant :
 // { id: <Generic> }
+type Identifiable<A> = {
+  id: A
+}
 
 // En utilisant le type identifiable, créer un type IdentifiableStudent qui fusionne
 // un identifiable d'un nomber avec une Student
+type IdentifiableStudent = Student & Identifiable<number>
+
+const jeanne: IdentifiableStudent = {
+  id: 2,
+  nom: 'Dupont',
+  prenom: 'Jeanne',
+  age: 24,
+  notes: [],
+}
