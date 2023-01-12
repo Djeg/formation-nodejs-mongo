@@ -50,7 +50,7 @@ Créer un model pour lancer un calcul : `CalculModel`. Ce model doit correspondr
 
 Créer un type `CalculType` en utilisant `z.infer` et créer `CalculSchema` en utilisant `zodToJsonSchema`.
 
-Toujous dans le même fichier créer un model `ResulModel` correspondant à l'objet suivant :
+Toujous dans le même fichier créer un model `ResultModel` correspondant à l'objet suivant :
 
 | Propriété | Type   | Description                         |
 | --------- | ------ | ----------------------------------- |

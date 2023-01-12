@@ -70,7 +70,7 @@ Maintenant que nous possédons notre model, notre type et notre schéma nous pou
 
 ```ts
 // src/routes/users.ts
-import { NewUserType, NewUserModel } from '../models/users'
+import { NewUserModel } from '../models/users'
 
 /**
  * Création du plugin des utilisateurs
@@ -79,16 +79,9 @@ export default async function userRoute(app: FastifyInstance) {
   /**
    * Création d'un route permettant de créer un nouvelle utilisateur
    */
-  app.post<{ Body: NewUserType }>('/users', async (request, reply) => {
+  app.post('/users', async request => {
     // Pour lancer la validation avec zod :
-    const { error, data: newUser } = NewUserModel.safeParse(request.body)
-
-    // Si il y a une erreur
-    if (error) {
-      reply.code(400)
-
-      return error
-    }
+    const newUser = NewUserModel.parse(request.body)
 
     console.log(newUser) // { email: '...', firstname: '', lastname: '' }
 
@@ -144,24 +137,13 @@ export default async function userRoute(app: FastifyInstance) {
   /**
    * Création d'un route permettant de créer un nouvelle utilisateur
    */
-  app.post<{ Body: NewUserType }>(
-    '/users',
-    newUserOptions,
-    async (request, reply) => {
-      // Pour lancer la validation avec zod :
-      const { error, data: newUser } = NewUserModel.safeParse(request.body)
+  app.post('/users', newUserOptions, async request => {
+    // Pour lancer la validation avec zod :
+    const newUser = NewUserModel.parse(request.body)
 
-      // Si il y a une erreur
-      if (error) {
-        reply.code(400)
+    console.log(newUser) // { email: '...', firstname: '', lastname: '' }
 
-        return error
-      }
-
-      console.log(newUser) // { email: '...', firstname: '', lastname: '' }
-
-      // Enregistrement en base de données ...
-    },
-  )
+    // Enregistrement en base de données ...
+  })
 }
 ```

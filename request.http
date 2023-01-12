@@ -52,3 +52,14 @@ GET http://127.0.0.1:5353/todos/31681531561351
 ###
 
 DELETE http://127.0.0.1:5353/todos/256546
+
+###
+
+POST http://127.0.0.1:5353/calculatrix
+Content-Type: application/json
+
+{
+  "operation": "add",
+  "x": 10,
+  "y": 20
+}
