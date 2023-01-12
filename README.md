@@ -29,7 +29,7 @@ npm run start:demon
 - [Configuration avec nodemon & dotenv](./assets/cours/nodemon-dotenv.md)
 - [Découvrir fastify](./assets/cours/fastify.md)
 - [Model, Schéma et Validaion](./assets/cours/zod.md)
-- Découvrir mongodb
+- [Découvrir mongodb](./assets/cours/mongo.md)
 - Créer des api rest avec fastify
 - Faire des tests
 - Architecture d'une application fastify
