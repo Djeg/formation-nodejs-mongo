@@ -390,3 +390,5 @@ app.get<MaRoute>('/test', request => {
   console.log(request.headers) // { "Content-Type": '.....' }
 })
 ```
+
+## Les plugins

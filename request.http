@@ -29,3 +29,26 @@ Content-Type: application/json
 {
   "title": "Coucou",
 }
+
+###
+
+GET http://127.0.0.1:5353/todos
+
+###
+
+POST http://127.0.0.1:5353/todos
+Content-Type: application/json
+
+{ 
+  "i": 256546,
+  "coucou": "djdsmlfsdj",
+  "dfkfhfh": "dfksdhflkshfldsh"
+}
+
+###
+
+GET http://127.0.0.1:5353/todos/31681531561351
+
+###
+
+DELETE http://127.0.0.1:5353/todos/256546

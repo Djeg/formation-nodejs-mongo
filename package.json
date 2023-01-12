@@ -9,7 +9,8 @@
     "start": "node -r dotenv/config dist/index.js",
     "start:dev": "ts-node -r dotenv/config src/index.ts",
     "start:demon": "nodemon -e .ts,.js,.json -w src -x \"npm run start:dev\"",
-    "start:calculator": "nodemon -e .ts,.js,.json -w src -x \"ts-node -r dotenv/config src/exos/calculatrice.ts\""
+    "start:calculator": "nodemon -e .ts,.js,.json -w src -x \"ts-node -r dotenv/config src/exos/calculatrice.ts\"",
+    "start:todos": "nodemon -e .ts,.js,.json -w src -x \"ts-node -r dotenv/config src/exos/todolist.ts\""
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,8 @@
   },
   "dependencies": {
     "dotenv": "^16.0.3",
-    "fastify": "^4.11.0"
+    "fastify": "^4.11.0",
+    "zod": "^3.20.2",
+    "zod-to-json-schema": "^3.20.2"
   }
 }
