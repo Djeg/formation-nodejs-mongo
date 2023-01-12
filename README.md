@@ -42,3 +42,4 @@ npm run start:demon
 - [Configurer nodemon et dotenv](./assets/exos/nodemon-dotenv.md)
 - [Exercice de calculatrice](./assets/exos/calculator.md)
 - [Exercice manipulation de fastify](./assets/exos/manipuler-fastify.md)
+- [Exercice : Le calculatrix](./assets/exos/calculatrix.md)

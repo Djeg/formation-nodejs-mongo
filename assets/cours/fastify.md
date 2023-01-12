@@ -392,3 +392,88 @@ app.get<MaRoute>('/test', request => {
 ```
 
 ## Les plugins
+
+Dans une véritable API Web, il est possible d'avoir un très grand nombres routes (parfois même des centaines). On ne vas pas mettre toutes les routes dans le même fichier. Pour séparer nos routes en plusieurs fichier, fastify à mis en place un système de « plugin » (Des petites extensions).
+
+Pour pouvoir utiliser les plugins nous avons besoin d'installer un package :
+
+```
+npm i fastify-plugin
+```
+
+Généralement, les différentes routes de notre applications sont rangé dans un dossier : `src/routes`
+
+Dans ce dossier nous allons pouvoir créer nos premiers plugins :
+
+```ts
+// src/routes/users.ts
+
+/**
+ * Un plugin est une fonction asynchrone recevant l'application fastify :
+ */
+export default async function userRoute(app: FastifyInstance) {
+  /**
+   * Grâce à l'application fastify, nous pouvons facilement
+   * déclarer des routes
+   */
+  app.get('/users', async () => {
+    return { ... }
+  })
+}
+```
+
+Maintenant que nous avons notre premier plugin, nous pouvons l'assembler (ou le connécter) dans notre fichier principal :
+
+```ts
+// src/index.ts
+import fastify from 'fastify'
+import fp from 'fastify-plugin'
+import userRoute from './routes/users'
+
+/**
+ * Création d'un app fastify
+ */
+const app = fastify()
+
+/**
+ * Maintenant nous pouvons connécter notre plugin :
+ */
+app.register(fp(userRoute))
+```
+
+## La décoration
+
+Fastify offre la possibilité d'enregistrer dans l'application des données et des fonctions. Cela vous nous permettre de transmettres des informations entre les différents plugins. Pour cela nous pouvons décorer l'application :
+
+```ts
+// src/routes/users.ts
+
+/**
+ * Création du plugin
+ */
+export default async function userRoute(app: FastifyInstance) {
+  /**
+   * Nous pouvons décorer l'application :
+   */
+  app.decorate('collection', 'user_collection')
+}
+```
+
+Maintenant grace à la décoration nous pouvons récupérer la variable `collection` n'importe ou !
+
+```ts
+// src/routes/pizzas.ts
+
+/**
+ * Création du plugin
+ */
+export default async function pizzaRoute(app: FastifyInstance) {
+  /**
+   * Route récupérer les pizzas
+   */
+  app.get('/pizzas', async () => {
+    // Je peux récupére la collection :
+    app.collection // 'user_collection'
+  })
+}
+```
