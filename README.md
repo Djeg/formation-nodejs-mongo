@@ -43,3 +43,4 @@ npm run start:demon
 - [Exercice de calculatrice](./assets/exos/calculator.md)
 - [Exercice manipulation de fastify](./assets/exos/manipuler-fastify.md)
 - [Exercice : Le calculatrix](./assets/exos/calculatrix.md)
+- [Exercice : La pizzeria](./assets/exos/pizzeria.md)

@@ -4,7 +4,6 @@ import {
   NewPizzaSchema,
   PizzaModel,
   PizzaSchema,
-  PizzaType,
 } from '../models/pizzas'
 
 /**
@@ -38,14 +37,12 @@ export default async function pizzas(app: FastifyInstance) {
     const newPizza = NewPizzaModel.parse(request.body)
 
     // On l'enregistre dans la base de donnée
-    const result = await (app as any).mongo.db
-      .collection('pizzas')
-      .insertOne(newPizza)
+    const result = await app.mongo.db?.collection('pizzas').insertOne(newPizza)
 
     // Je récupére la pizza depuis la base de donées
     return PizzaModel.parse(
-      await (app as any).mongo.db.collection('pizzas').findOne({
-        _id: result.insertedId,
+      await app.mongo.db?.collection('pizzas').findOne({
+        _id: result?.insertedId,
       }),
     )
   })

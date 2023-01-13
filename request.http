@@ -63,3 +63,13 @@ Content-Type: application/json
   "x": 10,
   "y": 20
 }
+
+###
+
+POST http://127.0.0.1:5353/pizzas
+Content-Type: application/json
+
+{
+  "name": "Regina",
+  "prix": 12.5
+}

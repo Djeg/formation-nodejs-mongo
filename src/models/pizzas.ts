@@ -12,7 +12,7 @@ import zodToJsonSchema from 'zod-to-json-schema'
  * Définission de PizzaModel
  */
 export const PizzaModel = z.object({
-  _id: z.string(),
+  _id: z.preprocess(id => `${id}`, z.string()),
   name: z.string().min(3),
   prix: z.number(),
 })

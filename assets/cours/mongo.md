@@ -31,7 +31,7 @@ En plus de fournir la base de données, il met à disposition une interface nous
 Pour utiliser il faut tout d'abord installer un plugin fastify nous permettant de nous connécter :
 
 ```bash
-npm i @fastify/mongo
+npm i @fastify/mongodb
 ```
 
 Pout commencer à travailler avec mongodb, il faut initialiser une connection à la base de données en utilisant le plugin installé précédement :
@@ -51,6 +51,8 @@ const app = fastify()
 app.register(fastifyMongo, {
   // Nous devons spécifier l'url de connnection à la base de données
   url: '....',
+  // Nous devons aussi spécifier la base de données :
+  database: 'pizzas',
 })
 ```
 
@@ -67,13 +69,13 @@ app.mongo.db
 Maintenant que nous possédons une connexion à notre base de données, il est très simple de créer un document dans une collection :
 
 ```ts
-const result = await app.mongo.db.collection('pizzas').insertOne({
+const result = await app.mongo.db?.collection('pizzas').insertOne({
   name: 'margarita',
   prix: 12.5,
 })
 
 // Ici la constant result contiendra l'identifiant mongo de votre document :
-result.insertedId
+result?.insertedId
 ```
 
 > Très important, vous devez lancer ce code dans une fonction `async`, assurez-vous aussi de typer en utilisant zod :
@@ -85,7 +87,7 @@ Il est aussi possible d'utiliser notre base de données pour mettre à jour un d
 ```ts
 import { ObjectId } from '@fastify/mongo'
 
-const result = await app.mongo.db.collection('pizzas').updateOne(
+const result = await app.mongo.db?.collection('pizzas').updateOne(
   {
     _id: new ObjectId('dskfhsdlfksdhlfksdhfsdhffsldkfh'),
   },
@@ -96,7 +98,7 @@ const result = await app.mongo.db.collection('pizzas').updateOne(
   },
 )
 // Ici la constante result contiendra l'identifiant de l'objet modifier
-result.upsertedId
+result?.upsertedId
 ```
 
 ## Supprimer un document
@@ -104,7 +106,7 @@ result.upsertedId
 ```ts
 import { ObjectId } from '@fastify/mongo'
 
-const result = await app.mongo.db.collection<PizzaType>('pizzas').deleteOne({
+const result = await app.mongo.db?.collection<PizzaType>('pizzas').deleteOne({
   _id: new ObjectId('sdmhfldhdlskfhlkshflkdshfkfhsd'),
 })
 ```
@@ -116,27 +118,27 @@ Pour récupérer un document (en utilisant son identifiant) :
 ```ts
 import { ObjectId } from '@fastify/mongo'
 
-const result = await app.mongo.db.collection<PizzaType>('pizzas').findOne({
+const result = await app.mongo.db?.collection<PizzaType>('pizzas').findOne({
   _id: new ObjectId('sdflkhsdlfksdhflksdhfsdkhf'),
 })
 ```
 
 > Nous pouvons aussi récupérer un document par l'un de ces champs :
->
-> ```ts
-> import { ObjectId } from '@fastify/mongo'
->
-> const result = await app.mongo.db.collection<PizzaType>('pizzas').findOne({
->   name: 'Regina',
-> })
-> ```
+
+```ts
+import { ObjectId } from '@fastify/mongo'
+
+const result = await app.mongo.db?.collection<PizzaType>('pizzas').findOne({
+  name: 'Regina',
+})
+```
 
 ### Récupérer plusieurs documents
 
 Pour récupérer tout les documents d'une collection :
 
 ```ts
-const documents = await app.mongo.db
+const documents = await app.mongo.db?
   .collection<PizzaType>('pizzas')
   .find()
   .toArray()
@@ -145,7 +147,7 @@ const documents = await app.mongo.db
 #### Limiter les résultat
 
 ```ts
-const documents = await app.mongo.db
+const documents = await app.mongo.db?
   .collection<PizzaType>('pizzas')
   .find()
   .limit(10)
@@ -155,7 +157,7 @@ const documents = await app.mongo.db
 #### Trier les résultats
 
 ```ts
-const documents = await app.mongo.db
+const documents = await app.mongo.db?
   .collection<PizzaType>('pizzas')
   .find()
   // 1 pour croissant, -1 pour décroissant
@@ -166,7 +168,7 @@ const documents = await app.mongo.db
 #### Utiliser un offset
 
 ```ts
-const documents = await app.mongo.db
+const documents = await app.mongo.db?
   .collection<PizzaType>('pizzas')
   .find()
   .limit(2)
@@ -177,7 +179,7 @@ const documents = await app.mongo.db
 #### Filtrer les résultat en utilisant une Query
 
 ```ts
-const documents = await app.mongo.db
+const documents = await app.mongo.db?
   .collection<PizzaType>('pizzas')
   .find({
     // name === 'Vegan'
@@ -187,7 +189,7 @@ const documents = await app.mongo.db
 ```
 
 ```ts
-const documents = await app.mongo.db
+const documents = await app.mongo.db?
   .collection<PizzaType>('pizzas')
   .find({
     // name === tout ce qui commence par Reg
@@ -197,7 +199,7 @@ const documents = await app.mongo.db
 ```
 
 ```ts
-const documents = await app.mongo.db
+const documents = await app.mongo.db?
   .collection<PizzaType>('pizzas')
   .find({
     // name === tout ce qui contient Reg
@@ -221,20 +223,20 @@ MongoDB ne posséde aucune **validation de données**. Afin d'éviter d'avoir de
 
 ```ts
 // Création d'une pizza
-const result = await app.mongo.db
+const result = await app.mongo.db?
   .collection<PizzaType>('pizzas')
   .insertOne(PizzaModel.parse({ name: 'Regina', prix: 12.5 }))
 
 // Récupération d'une pizza
 const pizza = PizzaModel.parse(
-  await app.mongo.db
+  await app.mongo.db?
     .collection<PizzaType>('pizzas')
     .findOne({ _id: new ObjectId('dfkhsdlfksdhffkh') }),
 )
 
 // Récupération de plusieurs pizza
 const pizzaList = PizzaListModel.parse(
-  await app.mongo.db
+  await app.mongo.db?
     .collection<PizzaType>('pizzas')
     .find()
     .limit(10)

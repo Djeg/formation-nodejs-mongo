@@ -2,17 +2,19 @@ import fastify from 'fastify'
 import fastifyPlugin from 'fastify-plugin'
 import calculatrix from './routes/calculatrix'
 import mongodb from '@fastify/mongodb'
+import pizzas from './routes/pizzas'
 
 // Création d'une application fastify
 const app = fastify({ logger: true })
 
-console.warn(process.env.DATABASE_URL)
-
+// Je connécte une base de données
 app.register(mongodb, {
   url: process.env.DATABASE_URL,
   database: 'pizzas',
 })
 
+// Je connécte toutes mes routes
+app.register(fastifyPlugin(pizzas))
 app.register(fastifyPlugin(calculatrix))
 
 // Démarage du serveur http
