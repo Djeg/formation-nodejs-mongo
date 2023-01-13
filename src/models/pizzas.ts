@@ -43,6 +43,21 @@ export type NewPizzaType = z.infer<typeof NewPizzaModel>
 export const NewPizzaSchema = zodToJsonSchema(NewPizzaModel)
 
 /**
+ * Définission de UpdatePizzaModel
+ */
+export const UpdatePizzaModel = NewPizzaModel.partial()
+
+/**
+ * Type de UpdatePizzaModel
+ */
+export type UpdatePizzaType = z.infer<typeof UpdatePizzaModel>
+
+/**
+ * Schéma de UpdatePizzaModel
+ */
+export const UpdatePizzaSchema = zodToJsonSchema(UpdatePizzaModel)
+
+/**
  * Définission de PizzaListModel
  */
 export const PizzaListModel = z.array(PizzaModel)

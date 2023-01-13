@@ -73,3 +73,20 @@ Content-Type: application/json
   "name": "Regina",
   "prix": 12.5
 }
+
+###
+
+GET http://127.0.0.1:5353/pizzas
+
+###
+
+PATCH http://127.0.0.1:5353/pizzas/63c108b98494022daa87523a
+Content-Type: application/json
+
+{
+  "prix": 9.6
+}
+
+###
+
+DELETE http://127.0.0.1:5353/pizzas/63c108b98494022daa87523a
