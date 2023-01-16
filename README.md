@@ -32,7 +32,7 @@ npm run start:demon
 - [Découvrir fastify](./assets/cours/fastify.md)
 - [Model, Schéma et Validaion](./assets/cours/zod.md)
 - [Découvrir mongodb](./assets/cours/mongo.md)
-- Créer des api rest avec fastify
+- [Créer des api rest avec fastify](./assets/cours/rest.md)
 - Faire des tests
 - Architecture d'une application fastify
 - Sécurité : JWT et CORS
