@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Dans cette formation vous apprendrez à créer des api web en utilisant nodejs et mongo db.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
@@ -10,7 +11,8 @@
     "start:dev": "ts-node -r dotenv/config src/index.ts",
     "start:demon": "nodemon -e .ts,.js,.json -w src -x \"npm run start:dev\"",
     "start:calculator": "nodemon -e .ts,.js,.json -w src -x \"ts-node -r dotenv/config src/exos/calculatrice.ts\"",
-    "start:todos": "nodemon -e .ts,.js,.json -w src -x \"ts-node -r dotenv/config src/exos/todolist.ts\""
+    "start:todos": "nodemon -e .ts,.js,.json -w src -x \"ts-node -r dotenv/config src/exos/todolist.ts\"",
+    "start:js": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",

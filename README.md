@@ -25,6 +25,8 @@ Pour installer ce projet commencer par le télécharger ou le cloner. Une fois e
 npm i
 # Démarre le serveur :
 npm run start:demon
+# Pour les utilisateurs JS
+npm run start:js
 ```
 
 ## Les supports
