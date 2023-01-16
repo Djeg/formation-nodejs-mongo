@@ -1,9 +1,11 @@
-# Formation NodeJS et MongoDB
+# NodeJS Mongo Projet
 
-Dans cette formation vous apprendrez à créer des api web en utilisant nodejs et mongo db.
+Dans cette formation vous apprendrez à créer une api rest compléte avec nodejs et mongodb.
 
 Ce repository est organisé en session, chaque session correspond à une semaine de formation, choisisez
 la votre afin de retrouver l'intégralité des cours, codes et supports
+
+## Cahier des charges
 
 ## Installer et démarrer ce projet
 
