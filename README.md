@@ -43,7 +43,7 @@ npm run start:js
 - [Créer des api rest avec fastify](./assets/cours/rest.md)
 - Faire des tests
 - Architecture d'une application fastify
-- Sécurité : JWT et CORS
+- [Sécurité : JWT et CORS](./assets/cours/security.md)
 - Déployer son application nodejs / mongodb avec heroku
 
 ## La pratique

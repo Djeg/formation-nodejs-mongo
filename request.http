@@ -11,4 +11,4 @@ Content-Type: application/json
 
 ###
 
-GET http://127.0.0.1:5353/users
+GET http://127.0.0.1:5353/users?email=john
