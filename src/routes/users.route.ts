@@ -4,10 +4,14 @@ import {
   NewUserSchema,
   UserCollectionModel,
   UserCollectionSchema,
+  UserCredentialModel,
+  UserCredentialSchema,
   UserModel,
   UserSchema,
   UserSearchCriteriaModel,
   UserSearchCriteriaSchema,
+  UserTokenModel,
+  UserTokenSchema,
 } from '../models/users.model'
 
 /**
@@ -66,6 +70,9 @@ export default async function users(app: FastifyInstance) {
       },
     },
     async request => {
+      // Je vérifie de bien recevoir un jeton de connexion
+      await request.jwtVerify()
+
       // Récupération des critéres de recherches
       const criterias = UserSearchCriteriaModel.parse(request.query)
 
@@ -87,6 +94,47 @@ export default async function users(app: FastifyInstance) {
 
       // On retourne les résultat de la recherche
       return UserCollectionModel.parse(data)
+    },
+  )
+
+  /**
+   * Route de création d'un jeton de connexion
+   */
+  app.post(
+    '/token',
+    {
+      schema: {
+        body: UserCredentialSchema,
+        response: { 201: UserTokenSchema },
+      },
+    },
+    async (request, reply) => {
+      // On récupére les données envoyé par l'utilisateur
+      const credential = UserCredentialModel.parse(request.body)
+
+      // On récupére l'utilisateur correspondant dans la base de données
+      const data = await app.mongo.db?.collection('users').findOne({
+        email: credential.email,
+        password: credential.password,
+      })
+
+      // Si il n'éxiste pas d'utilisateur
+      if (!data) {
+        reply.code(400)
+
+        return {
+          error: 'Bad credentials',
+        }
+      }
+
+      // On s'assure que les données de la base de données corresponde bien
+      // à notre model
+      const user = UserModel.parse(data)
+
+      // On génére notre UserTokenModel avec un jeton de connexion
+      return UserTokenModel.parse({
+        token: app.jwt.sign({ _id: user._id, email: user.email }),
+      })
     },
   )
 }

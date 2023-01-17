@@ -132,3 +132,6 @@ Pour valider un jeton, rien de plus simple :
 ```ts
 await request.jwtVerify()
 ```
+
+> Il est aussi possible de récupérer le contenue du jwt après la connexion
+> avec : `request.user`

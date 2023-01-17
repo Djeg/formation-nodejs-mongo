@@ -2,13 +2,24 @@ POST http://127.0.0.1:5353/users
 Content-Type: application/json
 
 {
-  "email": "john1234@mail.com",
-  "firstname": "John",
+  "email": "rose@mail.com",
+  "firstname": "Rose",
   "lastname": "Doe",
-  "password": "john12344389436",
-  "repeatedPassword": "jo1234"
+  "password": "rose12345",
+  "repeatedPassword": "rose12345"
 }
 
 ###
 
-GET http://127.0.0.1:5353/users?email=john
+GET http://127.0.0.1:5353/users?limit=90
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M2YzBhOTdjNmNhY2Y1YWUwNTJkYWQiLCJlbWFpbCI6InJvc2VAbWFpbC5jb20iLCJpYXQiOjE2NzM5NzA1Mzl9.wOk6uIvqU9ZeSdS9pOfFMM42XhHUhfeN-kti6LYYq78
+
+###
+
+POST http://127.0.0.1:5353/token
+Content-Type: application/json
+
+{
+  "email": "rose@mail.com",
+  "password": "rose12345"
+}

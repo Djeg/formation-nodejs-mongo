@@ -1,6 +1,7 @@
 import fastify from 'fastify'
 import mongodb from '@fastify/mongodb'
 import users from './routes/users.route'
+import fastifyJwt from '@fastify/jwt'
 
 // Création d'une application fastify
 const app = fastify({ logger: true })
@@ -9,6 +10,12 @@ const app = fastify({ logger: true })
 app.register(mongodb, {
   url: process.env.DATABASE_URL,
   database: 'pizzas',
+})
+
+// Je connécte le plugin permettant de générer des « jetons »
+// de connection (jwt token)
+app.register(fastifyJwt, {
+  secret: process.env.API_KEY_SECRET || 'secret',
 })
 
 // On enregistre le plugin des utilisateurs
