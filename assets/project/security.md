@@ -49,3 +49,14 @@ Créer le model suivant :
 | Champ | type   | description       |
 | ----- | ------ | ----------------- |
 | token | string | Contient le jeton |
+
+### Création de la route
+
+Dans le fichier `src/routes/users.route.ts`, ajouter une route pour la méthode `POST /token`. Cette route reçoit un `UserCredentialModel` dans le `request.query`, il retourne un réponse avec le code `201` et le model `UserTokenModel` lorsque la génération c'est bien passé.
+
+Il vous faudra dans cette route faire dans l'ordre :
+
+1. « parser » le UserCredentialModel
+2. « crypter » le mot de passe envoyé dans le UserCredenitalModel
+3. « Récupérer » depuis mongodb l'utilisateur correspondant à l'email et au mot de passe
+4. Générer et retourner un `UserTokenModel` en utilisant `app.jwt.sign({ .. })`
