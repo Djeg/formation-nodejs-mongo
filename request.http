@@ -8,3 +8,7 @@ Content-Type: application/json
   "password": "john12344389436",
   "repeatedPassword": "jo1234"
 }
+
+###
+
+GET http://127.0.0.1:5353/users

@@ -68,3 +68,46 @@ export type UserType = z.infer<typeof UserModel>
  * Schéma de UserModel
  */
 export const UserSchema = zodToJsonSchema(UserModel)
+
+/**
+ * Définission de UserSearchCriteriaModel
+ */
+export const UserSearchCriteriaModel = z.object({
+  limit: z.number().min(2).max(100).optional().default(20),
+  page: z.number().min(1).optional().default(1),
+  orderBy: z
+    .enum(['_id', 'email', 'firstname', 'lastname'])
+    .optional()
+    .default('_id'),
+  direction: z
+    .enum(['asc', 'desc'])
+    .optional()
+    .default('asc')
+    .transform(dir => ('asc' === dir ? 1 : -1)),
+  email: z.string().optional(),
+})
+
+/**
+ * Type de UserSearchCriteriaModel
+ */
+export type UserSearchCriteriaType = z.infer<typeof UserSearchCriteriaModel>
+
+/**
+ * Schéma de UserSearchCriteriaModel
+ */
+export const UserSearchCriteriaSchema = zodToJsonSchema(UserSearchCriteriaModel)
+
+/**
+ * Définission de UserCollectionModel
+ */
+export const UserCollectionModel = z.array(UserModel)
+
+/**
+ * Type de UserCollectionModel
+ */
+export type UserCollectionType = z.infer<typeof UserCollectionModel>
+
+/**
+ * Schéma de UserCollectionModel
+ */
+export const UserCollectionSchema = zodToJsonSchema(UserCollectionModel)
