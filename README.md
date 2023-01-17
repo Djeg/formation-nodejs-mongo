@@ -12,6 +12,7 @@ Votre objectif est de développer une API Rest pour un site de vente de chaussur
 Voici les différentes étapes et instructions pour la création de l'api :
 
 - [Les utilisateurs](./assets/project/users.md)
+- [La sécurité](./assets/project/security.md)
 
 ## Installer et démarrer ce projet
 
