@@ -52,7 +52,7 @@ Créer le model suivant :
 
 ### Création de la route
 
-Dans le fichier `src/routes/users.route.ts`, ajouter une route pour la méthode `POST /token`. Cette route reçoit un `UserCredentialModel` dans le `request.query`, il retourne un réponse avec le code `201` et le model `UserTokenModel` lorsque la génération c'est bien passé.
+Dans le fichier `src/routes/users.route.ts`, ajouter une route pour la méthode `POST /token`. Cette route reçoit un `UserCredentialModel` dans le `request.body`, il retourne un réponse avec le code `201` et le model `UserTokenModel` lorsque la génération c'est bien passé.
 
 Il vous faudra dans cette route faire dans l'ordre :
 
