@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { GlobalStyle } from '../Style/Global.Style'
 import Login from './Login'
 import Registration from './Registration'
+import ShoesList from './ShoesList'
 
 /**
  * @module App
@@ -21,7 +22,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />}>
-            <Route path="" element={<h1>App</h1>} />
+            <Route path="" element={<ShoesList />} />
           </Route>
           <Route path="/inscription" element={<Registration />} />
         </Routes>
