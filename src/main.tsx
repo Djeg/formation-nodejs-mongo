@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom/client'
+import App from './Component/App'
 
 /**
  * @module main
@@ -10,5 +11,5 @@ import ReactDOM from 'react-dom/client'
  */
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <h1>Shoes me</h1>,
+  <App></App>,
 )
