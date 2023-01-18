@@ -13,6 +13,7 @@ Voici les différentes étapes et instructions pour la création de l'api :
 
 - [Les utilisateurs](./assets/project/users.md)
 - [La sécurité](./assets/project/security.md)
+- [Les chaussures](./assets/project/shoes.md)
 
 ## Installer et démarrer ce projet
 
