@@ -23,3 +23,22 @@ Content-Type: application/json
   "email": "rose@mail.com",
   "password": "rose12345"
 }
+
+###
+
+POST http://127.0.0.1:5353/shoes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M2YzBhOTdjNmNhY2Y1YWUwNTJkYWQiLCJlbWFpbCI6InJvc2VAbWFpbC5jb20iLCJpYXQiOjE2NzQxMTk2MTh9.WFyK_RxKmdpGkMOEh5r7ICDER4IUC_vAuBKefeXjDqA
+
+{
+  "title": "Vend nike bon état",
+  "brand": "Nike",
+  "model": "Air force one",
+  "price": 100,
+  "pictures": [
+    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.solecollector.com%2Fcomplex%2Fimage%2Fupload%2Fzgjc5ijooqtwir1ccspq.jpg&f=1&nofb=1&ipt=6639b88daa5f1fb1f71ec57ad81479866c8535ecc0af07ec594ae6969156465d&ipo=images"
+  ],
+  "color": "FFF",
+  "condition": "less new",
+  "size": 40
+}

@@ -2,6 +2,8 @@ import fastify from 'fastify'
 import mongodb from '@fastify/mongodb'
 import users from './routes/users.route'
 import fastifyJwt from '@fastify/jwt'
+import fastifyCors from '@fastify/cors'
+import shoes from './routes/shoes.route'
 
 // Création d'une application fastify
 const app = fastify({ logger: true })
@@ -17,9 +19,13 @@ app.register(mongodb, {
 app.register(fastifyJwt, {
   secret: process.env.API_KEY_SECRET || 'secret',
 })
+app.register(fastifyCors, {
+  origin: true,
+})
 
 // On enregistre le plugin des utilisateurs
 app.register(users)
+app.register(shoes)
 
 // Démarage du serveur http
 app.listen({ port: 5353, host: '127.0.0.1' }, () => {
