@@ -21,6 +21,8 @@ app.register(fastifyJwt, {
 })
 app.register(fastifyCors, {
   origin: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+  allowedHeaders: ['Authorization', 'Content-Type'],
 })
 
 // On enregistre le plugin des utilisateurs
