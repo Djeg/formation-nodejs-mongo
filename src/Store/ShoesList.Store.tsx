@@ -26,7 +26,7 @@ export const fetchApiShoes = action(
     const token = localStorage.getItem('token')
 
     // Je lance ma requête http pour récupérer les chaussures
-    const response = await fetch('http://localhost:5353/shoes', {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/shoes`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

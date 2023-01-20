@@ -138,7 +138,7 @@ export const createApiNewShoes = action(
       store.get()
 
     // Je lance la requête HTTP permettant de créer une nouvelle chaussure
-    const response = await fetch('http://localhost:5353/shoes', {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/shoes`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
