@@ -1,5 +1,6 @@
 import { useStore } from '@nanostores/react'
-import { ShoesListStore } from '../Store/ShoesList.Store'
+import { useEffect } from 'react'
+import { fetchApiShoes, ShoesListStore } from '../Store/ShoesList.Store'
 import { SendButton, Text, Title } from '../Style/RegistrationAndLogin.Style'
 import {
   BottomNavContainer,
@@ -38,6 +39,11 @@ export default function ShoesList() {
   // Récupération des données du store
   const { shoes } = useStore(ShoesListStore)
 
+  // Ajout d'un effet qui le lance lors de l'affichage du composant
+  useEffect(() => {
+    fetchApiShoes()
+  }, [])
+
   return (
     <VerticalContainer>
       <Header>
@@ -60,7 +66,7 @@ export default function ShoesList() {
             <ShoesCardInformationContainer>
               <PriceText>{s.price}&nbsp;€</PriceText>
               <UserText>
-                Par {s.user.firtsname}&nbsp;{s.user.lastname}
+                Par {s.user.firstname}&nbsp;{s.user.lastname}
               </UserText>
               <SeeMoreButton to="">
                 <i className="fa-solid fa-cart-arrow-down" />
@@ -73,7 +79,9 @@ export default function ShoesList() {
         <BottomNavLink to="">
           <BottomNavIcon className="fa-solid fa-magnifying-glass"></BottomNavIcon>
         </BottomNavLink>
-        <BottomNavIcon className="fa-solid fa-circle-plus"></BottomNavIcon>
+        <BottomNavLink to="/nouvelle-chaussure">
+          <BottomNavIcon className="fa-solid fa-circle-plus"></BottomNavIcon>
+        </BottomNavLink>
         <BottomNavIcon className="fa-solid fa-right-from-bracket"></BottomNavIcon>
       </BottomNavContainer>
     </VerticalContainer>
