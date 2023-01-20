@@ -2,11 +2,11 @@ POST http://127.0.0.1:5353/users
 Content-Type: application/json
 
 {
-  "email": "rose@mail.com",
-  "firstname": "Rose",
-  "lastname": "Doe",
-  "password": "rose12345",
-  "repeatedPassword": "rose12345"
+  "email": "app.react@mail.com",
+  "firstname": "APP",
+  "lastname": "REACT",
+  "password": "abcdefgh",
+  "repeatedPassword": "abcdefgh"
 }
 
 ###
@@ -20,15 +20,15 @@ POST http://127.0.0.1:5353/token
 Content-Type: application/json
 
 {
-  "email": "rose@mail.com",
-  "password": "rose12345"
+  "email": "app.react@mail.com",
+  "password": "abcdefgh"
 }
 
 ###
 
 POST http://127.0.0.1:5353/shoes
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M2YzBhOTdjNmNhY2Y1YWUwNTJkYWQiLCJlbWFpbCI6InJvc2VAbWFpbC5jb20iLCJpYXQiOjE2NzQxMTk2MTh9.WFyK_RxKmdpGkMOEh5r7ICDER4IUC_vAuBKefeXjDqA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2NhNGYzZDIzZGY0NzA0YTQ2NzAyYTYiLCJlbWFpbCI6ImplYW4uZHVwb250QG1haWwuY29tIiwiaWF0IjoxNjc0MjAyOTc1fQ._yL-30ThWzqIiVESenVXoIjZ406OVPdNieauD0r2-t4
 
 {
   "title": "Vend puma bon état",
@@ -47,13 +47,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M2YzBhO
 
 GET http://127.0.0.1:5353/shoes
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M2YzBhOTdjNmNhY2Y1YWUwNTJkYWQiLCJlbWFpbCI6InJvc2VAbWFpbC5jb20iLCJpYXQiOjE2NzQxMTk2MTh9.WFyK_RxKmdpGkMOEh5r7ICDER4IUC_vAuBKefeXjDqA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2NhNGYzZDIzZGY0NzA0YTQ2NzAyYTYiLCJlbWFpbCI6ImplYW4uZHVwb250QG1haWwuY29tIiwiaWF0IjoxNjc0MjAyOTc1fQ._yL-30ThWzqIiVESenVXoIjZ406OVPdNieauD0r2-t4
 
 ###
 
-PATCH http://127.0.0.1:5353/shoes/63c95cf22345190a71ee8057
+PATCH http://127.0.0.1:5353/shoes/63ca4f7823df4704a46702a7
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M2YzBhOTdjNmNhY2Y1YWUwNTJkYWQiLCJlbWFpbCI6InJvc2VAbWFpbC5jb20iLCJpYXQiOjE2NzQxMTk2MTh9.WFyK_RxKmdpGkMOEh5r7ICDER4IUC_vAuBKefeXjDqA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2NhNGYzZDIzZGY0NzA0YTQ2NzAyYTYiLCJlbWFpbCI6ImplYW4uZHVwb250QG1haWwuY29tIiwiaWF0IjoxNjc0MjAyOTc1fQ._yL-30ThWzqIiVESenVXoIjZ406OVPdNieauD0r2-t4
 
 {
   "color": "6537AB",

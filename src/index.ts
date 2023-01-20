@@ -28,6 +28,12 @@ app.register(users)
 app.register(shoes)
 
 // Démarage du serveur http
-app.listen({ port: 5353, host: '127.0.0.1' }, () => {
-  console.log("Le serveur http est prêt sur l'adresse : http://127.0.0.1:5353")
-})
+app
+  .listen({
+    port: parseInt(process.env.PORT || '5353'),
+    host: process.env.HOST,
+  })
+  .then(() => {
+    console.log('server is running on ')
+  })
+  .catch(console.error)
