@@ -249,4 +249,54 @@ export default async function shoes(app: FastifyInstance) {
       )
     },
   )
+
+  /**
+   * Supprime l'une de mes annonces de chaussures
+   */
+  app.delete(
+    '/shoes/:id',
+    { schema: { params: IdOwnerSchema, response: { 200: ShoesSchema } } },
+    async (request, reply) => {
+      // Je m'assure que le jeton de connexion soit valide
+      await request.jwtVerify()
+
+      // On récupére l'identifiant de la chaussure contenue
+      // dans les params de la route
+      const { id } = IdOwnerModel.parse(request.params)
+
+      // On récupére la chaussure depuis la base de données
+      const shoes = ShoesModel.parse(
+        await app.mongo.db?.collection('shoes').findOne({
+          _id: new ObjectId(id),
+        }),
+      )
+
+      // Récupérer l'identifiant de l'utilisateur contenue dans le jeton
+      // de connexion.
+      const userId = (request.user as any)._id
+      // Maintenant que je connais l'identifiant de l'utilisateur, j'utilise
+      // mongodb pour aller chercher l'utilisateur en question
+      const user = UserModel.parse(
+        await app.mongo.db?.collection('users').findOne({
+          _id: new ObjectId(userId),
+        }),
+      )
+
+      // On s'assure que l'utilisateur connécté soit bien le vendeur
+      // de la chaussure
+      if (user._id !== shoes.user._id) {
+        reply.code(404)
+
+        return { error: 'Resource not found' }
+      }
+
+      // On supprime la chaussure de la base de données
+      await app.mongo.db?.collection('shoes').deleteOne({
+        _id: new ObjectId(shoes._id),
+      })
+
+      // On retourne la chaussure supprimé
+      return shoes
+    },
+  )
 }

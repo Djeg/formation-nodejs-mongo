@@ -45,6 +45,23 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M2YzBhO
 
 ###
 
-GET http://127.0.0.1:5353/shoes?
+GET http://127.0.0.1:5353/shoes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M2YzBhOTdjNmNhY2Y1YWUwNTJkYWQiLCJlbWFpbCI6InJvc2VAbWFpbC5jb20iLCJpYXQiOjE2NzQxMTk2MTh9.WFyK_RxKmdpGkMOEh5r7ICDER4IUC_vAuBKefeXjDqA
+
+###
+
+PATCH http://127.0.0.1:5353/shoes/63c95cf22345190a71ee8057
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M2YzBhOTdjNmNhY2Y1YWUwNTJkYWQiLCJlbWFpbCI6InJvc2VAbWFpbC5jb20iLCJpYXQiOjE2NzQxMTk2MTh9.WFyK_RxKmdpGkMOEh5r7ICDER4IUC_vAuBKefeXjDqA
+
+{
+  "color": "6537AB",
+  "price": 69.99
+}
+
+###
+
+DELETE http://127.0.0.1:5353/shoes/63c95fad9752b95ad873f077
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M2YzBhOTdjNmNhY2Y1YWUwNTJkYWQiLCJlbWFpbCI6InJvc2VAbWFpbC5jb20iLCJpYXQiOjE2NzQxMTk2MTh9.WFyK_RxKmdpGkMOEh5r7ICDER4IUC_vAuBKefeXjDqA
