@@ -38,6 +38,6 @@ export const fetchApiShoes = action(
     const shoes = await response.json()
 
     // Je met les chaussure dans mon store
-    store.setKey('shoes', shoes)
+    store.setKey('shoes', shoes || [])
   },
 )
