@@ -1,10 +1,10 @@
 {
   "name": "formation-nodejs-mongo",
   "version": "1.0.0",
-  "description": "Dans cette formation vous apprendrez à créer des api web en utilisant nodejs et mongo db.",
+  "description": "Dans cette formation vous apprendrez à créer une api rest compléte avec nodejs et mongodb.",
   "main": "index.js",
   "scripts": {
-    "compiler": "npx tsc --watch"
+    "watch:typescript": "npx tsc --watch"
   },
   "repository": {
     "type": "git",
