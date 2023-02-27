@@ -56,7 +56,7 @@ Lorsqu'on éxecute la commande `npm i` nous installons une librairie sur notre m
 
 > La petite option `-D` veut dire "développement". Il faut savoir que nous pouvons installer des librairies pour la production (des librairies qui seront utilisé sur le serveur final) et des librairies de développement (utilisable uniquement sur notre machine). Ici c'est la cas de typescript.
 
-> Attention le dossier `node_modules` ne doit pas être versionné sur git !
+> Attention le dossier `node_modules` ne doit pas être versionné sur git ! Il faut pour cela créer un fichier `.gitignore` et placer `node_modules` afin que `git` ignore ce dossier
 
 ### Configuration de typescript
 
@@ -97,25 +97,13 @@ Il suffit de lancer la commande suivante afin de compiler tout nos fichier types
 npx tsc
 ```
 
-> Attention le dossier `outDir` (généralement dist) ne doit pas être versionné sur git !
+> Attention le dossier `outDir` (généralement `dist`) ne doit pas être versionné sur git ! Pour cela il faut rajouter une ligne `dist` dans le fichier `.gitignore`
 
-## tsnode à la rescousse !
-
-Il éxiste un outil bien plus simple pour lancer du code typescript. C'est `ts-node`. Il permet d'éxécuter directement du typescript comme du javascript (sans passer par l'étape de compilation).
-
-Installer `ts-node` :
+Nous utilisions généralement l'option `watch` pour que typescript puisse compilé en direct (à chaque modification) nos fichier javascript :
 
 ```bash
-npm i -D ts-node
+npx tsc --watch
 ```
-
-Maintenant nous pouvons éxécuter n'importe quelle fichier typescript comme si c'était du javascript avec la commande suivante :
-
-```bash
-npx ts-node mon/fichier.ts
-```
-
-> Attention : TSNODE est très très très gourmand en mémoire vive. Il ne doit surtout être utilisé sur le serveur de production.
 
 ## Créer ses propres commande `npm` !
 
