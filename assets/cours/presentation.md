@@ -89,7 +89,7 @@ Pour cela on vas utiliser le fichier `tsconfig.json`. Dans ce fichier nous retro
 Pour cela il faut, dans le fihier `tsconfig.json` décommenté et configurer les options suivantes :
 
 - `"rootDir"` : Correspond au dossier contenant tout nos fichier typescript. Ce dossier c'est toujours **`src`**.
-- `"outDir"` : Correspond au dossier qui contiendra les fichier javascript compilé par typescript.
+- `"outDir"` : Correspond au dossier qui contiendra les fichier javascript compilé par typescript, généralement le dossier **`dist`**.
 
 Il suffit de lancer la commande suivante afin de compiler tout nos fichier typescript en javascript.
 
