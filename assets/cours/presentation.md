@@ -128,3 +128,23 @@ npm run init:typescript
 ```
 
 > Il éxiste 3 commandes fournie de base par npm : "start", "test" et "build". Ces 3 commandes sont obligatoire pour tout projet nodejs. La commande "start" démarre l'application, la commande "test" test l'application la commande "build" construit l'application. Pour ces 3 commande pas besoin de spécifier `run` juste après `npm`.
+
+## Nodemon
+
+`Nodemon` est un petit outil permettant de relancer automatiquement notre programme à chaque changement. Il faut t'abord installer nodemon :
+
+```bash
+npm i -D nodemon
+```
+
+Une fois installer, il permet d'observer un fichier javascript et de relancer le programme dès qu'une modification survient :
+
+Pour observer un fichier, il faut utiliser la commande :
+
+```bash
+npx nodemon monfichier.js
+```
+
+Ici, `nodemon` s'occupe de relancer notre programme dès que `monficher.js` sera modifié !
+
+> Il est conseillé de passer par les `scripts` du fichier `package.json`, exemple : `"watch:app": "npx nodemon dist/index.js"`

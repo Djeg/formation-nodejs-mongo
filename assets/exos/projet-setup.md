@@ -14,3 +14,10 @@
 > **ATTENTION** : Certains dossier ne doivent pas être versionné
 
 Envoyer votre lien github à votre formateur !
+
+## Nodemon
+
+1. Commencer par installer `nodemon`
+2. Créer un scripts dans le fichier `package.json` qui lance `nodemon` sur le fichier `dist/index.js`
+3. Assurez-vous que tout fonctionne
+4. Envoyer votre sur github et le lien à votre formateur :)
