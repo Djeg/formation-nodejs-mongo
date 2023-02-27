@@ -17,3 +17,5 @@ Dans cette formation vous apprendrez à créer une api rest compléte avec nodej
 - [Sécurité : JWT et CORS](./assets/cours/security.md)
 
 ## La pratique
+
+- [Créer son repository GitHUb](./assets/exos/repo-github.md)
