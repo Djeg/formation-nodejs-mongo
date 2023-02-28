@@ -9,7 +9,7 @@ Dans cette formation vous apprendrez à créer une api rest compléte avec nodej
 ## Le plan
 
 - [Présentation et installation](./assets/cours/presentation.md)
-- [Configuration avec nodemon & dotenv](./assets/cours/nodemon-dotenv.md)
+- [Configuration dotenv](./assets/cours/dotenv.md)
 - [Découvrir fastify](./assets/cours/fastify.md)
 - [Model, Schéma et Validaion](./assets/cours/zod.md)
 - [Découvrir mongodb](./assets/cours/mongo.md)
