@@ -21,3 +21,10 @@ Envoyer votre lien github à votre formateur !
 2. Créer un scripts dans le fichier `package.json` qui lance `nodemon` sur le fichier `dist/index.js`
 3. Assurez-vous que tout fonctionne
 4. Envoyer votre sur github et le lien à votre formateur :)
+
+## Concurrently
+
+1. Commencer par installer `concurrently`
+2. Créer un script nommé `start` dans le fichier `package.json` qui, graçe à concurrently lance la compilateur typescript ainsisi que le compilateur de l'application
+3. Assurez-vous que tout fonctionne
+4. Envoyer sur github et votre lien au formateur

@@ -148,3 +148,25 @@ npx nodemon monfichier.js
 Ici, `nodemon` s'occupe de relancer notre programme dès que `monficher.js` sera modifié !
 
 > Il est conseillé de passer par les `scripts` du fichier `package.json`, exemple : `"watch:app": "npx nodemon dist/index.js"`
+
+> Avec la version 18 de nodejs nous pouvons utilise l'option `--watch` pour accomplir le même résultat (ex: `node --watch dist/index.js`)
+
+# `Concurrently`
+
+Ici, le problème est que nous ne pouvons pas lancer 2 commandes en même temps. Il nous faut donc 2 terminal avec chacun sa commande :-(.
+
+Il éxiste un outil, développé par la communauté nodejs, permettant de lancer autant de commande que l'on souhaite, en même temps !
+
+Cet outil c'est `concurrently` :
+
+```bash
+npm i -D concurrently
+```
+
+Concurrently est une petit commande permettant de lancer 1, 2, 3, etc .... scripts npm ! Pour cela :
+
+```bash
+npx concurrently npm:watch:typescript npm:watch:app
+```
+
+> Il est conseiller de faire un script dans le fichier `package.json` pour ne pas avoir à taper la commande nous même : (ex: `"start": "npx concurrently npm:watch:typescript npm:watch:app"`)
