@@ -21,3 +21,4 @@ Dans cette formation vous apprendrez à créer une api rest compléte avec nodej
 - [Créer son repository GitHUb](./assets/exos/repo-github.md)
 - [Mettre en place votre premier projet nodejs !](./assets/exos/projet-setup.md)
 - [La configuration](./assets/exos/configuration.md)
+- [Votre premier server logique](./assets/exos/first-server.md)
