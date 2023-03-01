@@ -103,6 +103,8 @@ Lorsque nous faisons une route avec fastify, nous pouvons recevoir 2 paramètres
 - [La request](https://www.fastify.io/docs/latest/Reference/Request/)
 - [La response](https://www.fastify.io/docs/latest/Reference/Reply/)
 
+Ces deux paramètres nous permettent de totalement personaliser notre réponse mais aussi de récupérer des informations de notre request !
+
 ### Personaliser le status de réponse
 
 Il est parfois essentiel que notre serveur retourne le bon status. Par éxemple le status `200 Ok` est utilisé lorsque tout ce passe bien, cependant si une erreur survient notre serveur doit répondre le bon status :
@@ -125,6 +127,29 @@ app.get('/test', (request, response) => {
   return 'Une erreur est survenue'
 })
 ```
+
+### Personaliser les `header` de notre réponse
+
+Il est possible d'envoyer au client nos propres `header` HTTP. Ce sont des « meta informations », des informations que le serveur peut transmettre au clietn mais qui ne s'affiche pas (exemple les cookie).
+
+Pour personnaliser nos `header` http, nous utilisons la `response` :
+
+```ts
+app.get('/test', (request, response) => {
+  // Ajouter un entête http
+  response.header('Coded-In', 'fastify')
+
+  return 'coucou'
+})
+```
+
+cIl éxiste un très grand nombre d'en-tete http :
+
+- [Liste des en-tête http](https://developer.mozilla.org/fr/docs/Web/HTTP/Headers)
+
+L'en-tête le plus incontournable c'est le `Content-Type`, il définie le type de contenue que nous souhaitons envoyé au client. Il en existe un [très grand nombre](https://developer.mozilla.org/fr/docs/Web/HTTP/Basics_of_HTTP/MIME_types).
+
+Le plus répandu aujourd'hui (53% du trafic) c'est `application/json` soit, le format `json`.
 
 ## Le format JSON
 
@@ -195,6 +220,29 @@ false
     }
   }
 }
+```
+
+### Faire du JSON avec fastify
+
+`jSON` est un format, inspiré de javascript, il est « natif » au langage de programmation. Aucune installation, aucun apprentissage, il suffit tout simplement de retourner un tableaux ou un objet pour faire du JSON !
+
+```ts
+app.get('/notes', () => {
+  // On retourne un tableaux javascript
+  // fastify utilisera tout seul le format JSON
+  return [12, 8, 6, 19, 17]
+})
+
+app.get('/john', () => {
+  // On retourne un objet javascript
+  // fastify utilisera tout seul le format JSON
+  return {
+    id: 1,
+    email: 'john@mail.com',
+    firstname: 'john',
+    lastname: 'doe',
+  }
+})
 ```
 
 ### Récupérer ses données dans notre route fastify

@@ -5,11 +5,18 @@ const app = fastify()
 
 // Première route sur le resource principale
 app.get('/', () => {
-  return 'Coucou'
+  return {
+    message: 'Coucou',
+  }
 })
 
 // Seconde route permettan de saluer
-app.get('/hello', () => {
+app.get('/hello', (request, response) => {
+  // On change le status de notre réponse
+  response.code(404)
+  /// On ajoute un en-tête http
+  response.header('Coded-In', 'fastify')
+
   return 'Hello tout le monde !'
 })
 

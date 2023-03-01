@@ -18,3 +18,22 @@
 3. Toujours dans ce fichier, écrivez une seconde requête pour la resource `/hello` sur notre serveur
 4. Envoyé chacune des requêtes assurez-vous que tout fonctionne
 5. Commit sur gitub et de partager le lien github
+
+## Le format json et la réponse
+
+1. Dans le fichier `index.ts`, créer une route : `/eleves` qui retourne
+   le tableaux suivant :
+
+| id  | nom  | prenom | age |
+| --- | ---- | ------ | --- |
+| 1   | john | john   | 32  |
+| 2   | rose | john   | 36  |
+| 3   | jane | john   | 40  |
+| 4   | jean | john   | 38  |
+
+> il faudra essayer de transformer les données au dessus en tableaux javascript
+
+2. Tester votre route en utilusant le fichier `request.http`
+3. Ajouter dans la réponse une en-tête http : `Developed-With: fastify`
+4. Tester votre route en utilusant le fichier `request.http`
+5. Faite un commit, pousser sur github et envoyer le lien github sur le chat !
