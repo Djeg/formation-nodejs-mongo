@@ -96,6 +96,13 @@ GET http://127.0.0.1:4646
 GET http://127.0.0.1:4646/hello
 ```
 
+### La `request` et la `response`
+
+Lorsque nous faisons une route avec fastify, nous pouvons recevoir 2 paramètres :
+
+- [La request](https://www.fastify.io/docs/latest/Reference/Request/)
+- [La response](https://www.fastify.io/docs/latest/Reference/Reply/)
+
 ### Personaliser le status de réponse
 
 Il est parfois essentiel que notre serveur retourne le bon status. Par éxemple le status `200 Ok` est utilisé lorsque tout ce passe bien, cependant si une erreur survient notre serveur doit répondre le bon status :

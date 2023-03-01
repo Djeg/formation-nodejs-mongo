@@ -3,14 +3,20 @@ import fastify from 'fastify'
 // Création d'une application (notre serveur logique HTTP)
 const app = fastify()
 
+// Première route sur le resource principale
 app.get('/', () => {
-  console.log('Coucou !')
-
   return 'Coucou'
 })
 
+// Seconde route permettan de saluer
+app.get('/hello', () => {
+  return 'Hello tout le monde !'
+})
+
 // On écoute une porte de notre ordinateur
-app.listen({ port: 5353, host: '127.0.0.1' }, () => {
+app.listen({ port: process.env.PORT as any, host: process.env.HOST }, () => {
   // Petit fonction qui se déclenche lorsque notre serveur se met à écouter la porte
-  console.log('Mon serveur est prèt : http://127.0.0.1:5353')
+  console.log(
+    `Mon serveur est prèt : http://${process.env.HOST}:${process.env.PORT}`,
+  )
 })
