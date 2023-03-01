@@ -3,14 +3,10 @@ import fastify from 'fastify'
 // Création d'une application (notre serveur logique HTTP)
 const app = fastify()
 
-// Création d'une route sur la resource principal '/'
-app.get('/', () => 'Coucou les amis')
+app.get('/', () => {
+  console.log('Coucou !')
 
-// Création d'une route pour la resource "/hello"
-app.get('/hello', () => {
-  console.log('Hello World !')
-
-  return 'Coucou tout le monde'
+  return 'Coucou'
 })
 
 // On écoute une porte de notre ordinateur

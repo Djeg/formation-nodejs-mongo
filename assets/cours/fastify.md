@@ -70,140 +70,31 @@ app.delete('/', () => { ... })
 
 ```
 
-#### Les paramètres de routes
+## Transmettre des données à notre serveur
 
-Il est possible en fastify de créer des routes dites "dynamique". Ce sont des routes qui accépte un ou plusieurs paramètre dans leur URI :
+Pour faire des « vrais » requêtes (écrire la Request nous même), il éxiste une extension VSCode super pratique : c'est [Rest API Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
 
-```ts
-// Ici nous déclarons une route « dynamique ». Et nous devons spécifier via un générique
-// le type des nos params :
-app.get<{ Params: { name: string } }>('/bonjour/:name', request => {
-  // Nous utilisons la request pour récupérer le contenu du paramètre
-  // « name » :
-  const name = request.params.name
+Lorsque l'on fais des requêtes HTTP à un serveur nous dévons spécifier une méthode HTTP :
 
-  return `Bonjour ${name}`
-})
-```
+- GET : Obtenir
+- POST : Créer
+- DELETE : Effacer
+- PATCH : Modifier une partie
+- PUT : Modifier l'intégralité
 
-Pour plus de lisibilité il est tout à fait possible de créer notre propre type :
+Certaines de ses actions pour s'éxécuter doivent envoyer de la données à notre serveur ! C'est le cas des actions `POST`, `PATCH` et `PUT`.
 
-```ts
-/**
- * On déclare le type de nos params
- */
-type SalutParams = {
-  name: string
+Pour envoyer des données en utilisant le format JSON il faut, dans notre requête HTTP spécifier un en-tête `Content-Type`. Cet en-tête http accépte un `MIME Type` qui est `application/json`
+
+```http
+POST http://monserver.com/articles
+Content-Type: application/json
+
+{
+  "title": "Mon voyage en espagne",
+  "description": "Super voyage ...",
+  "content": "lorem ipsum dolor sit amet ..."
 }
-
-/**
- * On déclare la route :
- */
-app.get<{ Params: SalutParams }>('/bonjour/:name', request => {
-  // Nous utilisons la request pour récupérer le contenu du paramètre
-  // « name » :
-  const name = request.params.name
-
-  return `Bonjour ${name}`
-})
-```
-
-On peut aussi créer un type pour l'intégralité du générique :
-
-```ts
-/**
- * On déclare le type de nos params
- */
-type SalutParams = {
-  name: string
-}
-
-/**
- * On déclare un type pour notre route
- */
-type SalutRoute = {
-  Params: SalutParams
-}
-
-/**
- * On déclare la route :
- */
-app.get<SalutRoute>('/bonjour/:name', request => {
-  // Nous utilisons la request pour récupérer le contenu du paramètre
-  // « name » :
-  const name = request.params.name
-
-  return `Bonjour ${name}`
-})
-```
-
-Généralement la solution la plus répandu est un mélange des 2 solutions plus haut :
-
-```ts
-/**
- * Création d'un type pour notre route :
- */
-type SalutRoute = {
-  Params: {
-    name: string
-  }
-}
-
-/**
- * On déclare la route :
- */
-app.get<SalutRoute>('/bonjour/:name', request => {
-  // Nous utilisons la request pour récupérer le contenu du paramètre
-  // « name » :
-  const name = request.params.name
-
-  return `Bonjour ${name}`
-})
-```
-
-### Request & Reply
-
-En fastify il éxiste 2 paramètre envoyé à la fonction de traitement d'une route :
-
-- [La request](https://www.fastify.io/docs/latest/Reference/Request/)
-- [La Reply](https://www.fastify.io/docs/latest/Reference/Reply/)
-
-Ces deux paramètres permettent de récupérer les informations relative à la Request envoyé par le client et personnaliser la réponse du serveur (reply).
-
-Il est possible de récupérer tout un tas d'informations ainsi que de personnaliser notre réponse en utilisant ces deux objets correctement
-
-> Nous avons dèja vu plus haut comment utiliser la request ! Nous avons aussi utiliser un générique afin de typer les données de la request. Dans ce généric nous pouvons aussi personnaliser d'autre données comme les Querystring, Body, Headers, Params mais aussi la Reply : https://www.fastify.io/docs/latest/Reference/TypeScript/#getting-started
-
-#### Les query string
-
-Il est aussi possible de « typer » et manipuler des query string (filtres) :
-
-```ts
-/**
- * Création d'un type pour ma route salutation
- */
-type SalutationRoute = {
-  Params: {
-    name: string
-  }
-  Querystring: {
-    upcase?: boolean
-  }
-}
-
-/**
- * On déclare la route :
- */
-app.get<SalutationRoute>('/salutation/:name', request => {
-  // Nous utilisons la request pour récupérer le contenu du paramètre
-  // « name » :
-  const name = request.params.name
-
-  // On récupére le filtre "upcase"
-  const upcase = request.query.upcase
-
-  return upcase ? `Bonjour ${name}`.toUpperCase() : `Bonjour ${name}`
-})
 ```
 
 ### Personaliser le status de réponse
@@ -297,31 +188,6 @@ false
       }
     }
   }
-}
-```
-
-## Transmettre des données à notre serveur
-
-Lorsque l'on fais des requêtes HTTP à un serveur nous dévons spécifier une méthode HTTP :
-
-- GET : Obtenir
-- POST : Créer
-- DELETE : Effacer
-- PATCH : Modifier une partie
-- PUT : Modifier l'intégralité
-
-Certaines de ses actions pour s'éxécuter doivent envoyer de la données à notre serveur ! C'est le cas des actions `POST`, `PATCH` et `PUT`.
-
-Pour envoyer des données en utilisant le format JSON il faut, dans notre requête HTTP spécifier un en-tête `Content-Type`. Cet en-tête http accépte un `MIME Type` qui est `application/json`
-
-```http
-POST http://monserver.com/articles
-Content-Type: application/json
-
-{
-  "title": "Mon voyage en espagne",
-  "description": "Super voyage ...",
-  "content": "lorem ipsum dolor sit amet ..."
 }
 ```
 
