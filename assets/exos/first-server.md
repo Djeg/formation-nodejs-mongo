@@ -93,3 +93,12 @@ GET /calc/div/:x/:y
 > Attention à bien gérer le cas d'une division par 0 ...
 
 Une fois terminer envoyer le lien de votre github avec l'exercice :)
+
+## Le plugin calulcatrice
+
+1. Installer fastify plugin
+2. Créer un dossier dans `src/` nommé `routes`
+3. Ajouter un fichier `calculatrice.ts` dans le dossier `src/routes`
+4. Placez toutes les routes concernant la calculatrice dans un plugin du fichier `calculatrice.ts`
+5. Branchez votre plugin dans le fichier `index.ts` (vous pouvez supprimer les routes concernant la calculatrice)
+6. Tester puis publié sur github
