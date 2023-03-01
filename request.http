@@ -10,13 +10,27 @@ GET http://127.0.0.1:5353/eleves
 
 ###
 
-POST http://127.0.0.1:5353/eleves?nom=john
+GET http://127.0.0.1:5353/calc/add/10/5
+
+###
+
+GET http://127.0.0.1:5353/calc/sub/10/5
+
+###
+
+GET http://127.0.0.1:5353/calc/mul/10/5
+
+###
+
+GET http://127.0.0.1:5353/calc/div/10/0
+
+###
+
+POST http://127.0.0.1:5353/calculate
+operation: dkshfskhfsdlkhf
 Content-Type: application/json
-nom: john
-prenom: john
 
 {
-  "nom": "John",
-  "prenom": "John",
-  "age": 32
+  "x": 10,
+  "y": 0
 }
