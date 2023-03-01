@@ -356,6 +356,57 @@ app.post<EleveRoute>('/eleves', request => {
 })
 ```
 
+#### 4. Les paramètres de route
+
+Sur la plupart des sites internet il éxiste des routes ditent « dynamique ».
+
+Exemple :
+
+```
+https://www2.hm.com/fr_fr/homme/nouveautes/vetements.html
+https://www2.hm.com/fr_fr/femme/nouveautes/vetements.html
+```
+
+Certaine route peuvent contenir des paramètres ! Ce paramètres nous permettent d'être plus spécifique dans URL. Par exemple, `homme` peut être remplacè par `femme`
+
+Pour envoyer des requêtes à une route dynamique :
+
+```http
+GET http://127.0.0.1:5353/vetements/25
+
+###
+
+GET http://127.0.0.1:5353/vetements/150
+
+###
+
+GET http://127.0.0.1:5353/vetements/14
+```
+
+Pour créer des routes dynamique avec des paramètres :
+
+```ts
+/**
+ * Créer le type pour notre route
+ */
+export type VetementRoute = {
+  Params: {
+    id: string
+  }
+}
+
+// Création d'un route qui contient un paramètre
+// « id »
+app.get<VetementRoute>('/vetements/:id', request => {
+  // Pour récupérer l'identifiant, on utilise
+  request.params.id
+})
+```
+
+#### Important
+
+Il n'y a que le `body` qui accépte des types différent de `string`. Pour les querystring, params ou headers, on ne peut envoyer que des `string`.
+
 ### Comprendre le généric envoyé à la route
 
 Un route à besoin d'un type générique afin de définir ce que contient la request et plus spécifiquement les éléments suivant :

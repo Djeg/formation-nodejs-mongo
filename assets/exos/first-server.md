@@ -37,3 +37,59 @@
 3. Ajouter dans la réponse une en-tête http : `Developed-With: fastify`
 4. Tester votre route en utilusant le fichier `request.http`
 5. Faite un commit, pousser sur github et envoyer le lien github sur le chat !
+
+## La calculatrice !
+
+Dans le fichier `index.ts`, réaliser les routes suivantes :
+
+### L'addition
+
+1. Créer une route `get /calc/add/:x/:y` avec le bon type associer
+2. Retourner un objet json de cette forme :
+
+```json
+{
+  "result": <resultat>,
+  "x": <x>,
+  "y": <y>,
+  "operation": "addition"
+}
+```
+
+3. Utiliser le fichier `request.http` pour tester cette route !
+
+### Les autres opérations
+
+1. En suivant les même étapes que l'exercice précédent réaliser
+   les routes suivantes :
+
+```
+GET /calc/sub/:x/:y
+GET /calc/mul/:x/:y
+GET /calc/div/:x/:y
+```
+
+### La route calculatrice
+
+1. Créer la route suivante `post /calculate`
+2. Cette route accépte un en tête HTTP : `Operation` pouvant contenir la chaine de caractère suivante :
+
+- add
+- mul
+- sub
+- div
+
+3. Cette route accépte aussi des données JSON dans son body, ces données doivent être de cette forme :
+
+```json
+{
+  "x": 15,
+  "y": 26
+}
+```
+
+4. En utilisant l'en-tête http `Operation` ainsi que les données envoyé dans le `body`, réaliser la bonne opération
+
+> Attention à bien gérer le cas d'une division par 0 ...
+
+Une fois terminer envoyer le lien de votre github avec l'exercice :)
