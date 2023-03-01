@@ -74,27 +74,26 @@ app.delete('/', () => { ... })
 
 Pour faire des « vrais » requêtes (écrire la Request nous même), il éxiste une extension VSCode super pratique : c'est [Rest API Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
 
-Lorsque l'on fais des requêtes HTTP à un serveur nous dévons spécifier une méthode HTTP :
+Cette extension permet d'écrire de véritable « request » et de visualiser de véritable « response ». Le principe est simple, nous pouvons créer des fichier `.http` et commencer à écrire nos requêtes et recevoir des réponses :
 
-- GET : Obtenir
-- POST : Créer
-- DELETE : Effacer
-- PATCH : Modifier une partie
-- PUT : Modifier l'intégralité
+Exemple :
 
-Certaines de ses actions pour s'éxécuter doivent envoyer de la données à notre serveur ! C'est le cas des actions `POST`, `PATCH` et `PUT`.
+Création d'un fichier `request.http` à la racine du projet
 
-Pour envoyer des données en utilisant le format JSON il faut, dans notre requête HTTP spécifier un en-tête `Content-Type`. Cet en-tête http accépte un `MIME Type` qui est `application/json`
+```
+GET http://127.0.0.1:4646
+```
+
+Une fois la requête écrite, il suffit de cliquer sur « send request » afin de consulter le fichier request !
+
+Vous pouvez écrire plusieurs requête dans ce fichier, pour cela il suffit de les séparer par 3 `###` :
 
 ```http
-POST http://monserver.com/articles
-Content-Type: application/json
+GET http://127.0.0.1:4646
 
-{
-  "title": "Mon voyage en espagne",
-  "description": "Super voyage ...",
-  "content": "lorem ipsum dolor sit amet ..."
-}
+###
+
+GET http://127.0.0.1:4646/hello
 ```
 
 ### Personaliser le status de réponse

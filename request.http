@@ -1,1 +1,1 @@
-GET https://www.google.com/images/branding/googlelogo/1x/googlelogo_light_color_272x92dp.png
+GET http://127.0.0.1:5353
