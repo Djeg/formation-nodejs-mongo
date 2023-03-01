@@ -4,3 +4,19 @@ GET http://127.0.0.1:5353
 
 GET http://127.0.0.1:5353/hello
 
+###
+
+GET http://127.0.0.1:5353/eleves
+
+###
+
+POST http://127.0.0.1:5353/eleves?nom=john
+Content-Type: application/json
+nom: john
+prenom: john
+
+{
+  "nom": "John",
+  "prenom": "John",
+  "age": 32
+}

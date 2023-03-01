@@ -247,33 +247,113 @@ app.get('/john', () => {
 
 ### Récupérer ses données dans notre route fastify
 
-Pour récupérer les données json envoyé par un client il faut utiliser le `request.body` (par éxemple, je souhaite récupérer le title envoyé en json : `request.body.title`).
+Il est possible d'envoyé des données à notre server en utilisant différentes techniques :
 
-**Attention !** En typescript ce `request.body` doit être typé !
+#### 1. Utiliser le body
+
+Pour envoyer des données en utilisant le body, il suffit de spécifier un type de
+contenue (ici `application/json`) et ensuite de mettre nos données
+
+```http
+POST http://127.0.0.1:5353/eleves
+Content-Type: application/json
+
+{
+  "nom": "john",
+  "prenom": "john",
+  "age": 34
+}
+```
+
+Il est possible de récupérer les données envoyé dans le body en utilisant `request` :
 
 ```ts
-import fastify from 'fastify'
+app.post('/eleves', request => {
+  // On récupére le nom envoyé dans la requète
+  request.body.nom
+  request.body.age
+})
+```
 
-const app = fastify()
+En typescript, il faut typer le contenue de notre body :
 
-// Type contenant la définition des Params, Querystring mais aussi le body
-type CreateArticleRoute = {
+```ts
+/**
+ * Création d'un type pour toute la route
+ */
+type EleveRoute = {
   Body: {
-    title: string
-    description: string
-    content: string
+    nom: string
+    prenom: string
+    age: number
   }
 }
 
-// Création d'une route post pour ajouter un nouvelle article
-app.post<CreateArticleRoute>('/articles', request => {
-  // Récupérer le titre de mon article
-  const title = request.body.title
-
-  // Enregistrer l'article dans une base de données (par éxemple MongoDB) ...
+// On indique à fastify ce que contient notre body
+app.post<EleveRoute>('/eleves', request => {
+  // On récupére le nom
+  request.body.nom
 })
+```
 
-app.listen(....)
+#### 2. Utiliser les query strings
+
+VOici un éxemple de requête qui utilise des query string :
+
+```http
+GET http://127.0.0.1:5353/eleves?sortBy=alpha&direction=ASC
+```
+
+Pour récupérer ces « query string » (ou filtres) dans notre code il faut aussi utiliser la `request` :
+
+```ts
+/**
+ * Création d'un type pour toute la route
+ */
+type EleveRoute = {
+  Querystring: {
+    sortBy: string
+    direction: string
+  }
+}
+
+// On indique à fastify ce que contient notre body
+app.post<EleveRoute>('/eleves', request => {
+  // Pour récupérer un filtre
+  request.query.sortBy
+})
+```
+
+#### 3. Utiliser les `headers`
+
+Je peux aussi envoyer des données en utilisant les headers :
+
+```http
+POST http://127.0.0.1:5353/eleves
+nom: john
+prenom: john
+age: 32
+```
+
+Pour récupérer ces « headers » (ou en-tête http) dans notre code il faut aussi utiliser la `request` :
+
+```ts
+/**
+ * Création d'un type pour toute la route
+ */
+type EleveRoute = {
+  Headers: {
+    nom: string
+    prenom: string
+    age: string
+  }
+}
+
+// On indique à fastify ce que contient notre body
+app.post<EleveRoute>('/eleves', request => {
+  // Pour récupérer le nom d'un élève :
+  request.headers.nom
+})
 ```
 
 ### Comprendre le généric envoyé à la route
