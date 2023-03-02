@@ -11,9 +11,9 @@ Dans cette formation vous apprendrez à créer une api rest compléte avec nodej
 - [Présentation et installation](./assets/cours/presentation.md)
 - [Configuration dotenv](./assets/cours/dotenv.md)
 - [Découvrir fastify](./assets/cours/fastify.md)
-- [Model, Schéma et Validaion](./assets/cours/zod.md)
-- [Découvrir mongodb](./assets/cours/mongo.md)
 - [Créer des api rest avec fastify](./assets/cours/rest.md)
+- [Découvrir mongodb](./assets/cours/mongo.md)
+- [Model, Schéma et Validaion](./assets/cours/zod.md)
 - [Sécurité : JWT et CORS](./assets/cours/security.md)
 
 ## La pratique
