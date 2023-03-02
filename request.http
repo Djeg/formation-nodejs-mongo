@@ -34,3 +34,7 @@ Content-Type: application/json
   "x": 10,
   "y": 0
 }
+
+###
+
+GET http://127.0.0.1:5353/testmongo

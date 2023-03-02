@@ -5,22 +5,28 @@ import { FastifyInstance } from 'fastify'
  */
 export default async function calculatriceRoutes(app: FastifyInstance) {
   // Création d'une route permettant d'additionner 2 nombre
-  app.get<CalcRoute>('/calc/add/:x/:y', request => {
+  app.get<CalcRoute>('/calc/add/:x/:y', async request => {
     // Récupérer les paramètres
     const x = parseFloat(request.params.x)
     const y = parseFloat(request.params.y)
 
-    // On retourne l'objet de résultat
-    return {
+    // Résulat de la calculatrice
+    const result = {
       result: x + y,
       x: x,
       y: y,
       operation: 'add',
     }
+
+    // Enreigistré ce « result » dans la collection `calulcalatrice` de
+    // votre mongodb !
+
+    // On retourne l'objet de résultat
+    return result
   })
 
   // Création d'une route permettant de soustraire 2 nombres
-  app.get<CalcRoute>('/calc/sub/:x/:y', request => {
+  app.get<CalcRoute>('/calc/sub/:x/:y', async request => {
     // Récupérer les paramètres
     const x = parseFloat(request.params.x)
     const y = parseFloat(request.params.y)
@@ -35,7 +41,7 @@ export default async function calculatriceRoutes(app: FastifyInstance) {
   })
 
   // Création d'une route permettant de soustraire 2 nombres
-  app.get<CalcRoute>('/calc/mul/:x/:y', request => {
+  app.get<CalcRoute>('/calc/mul/:x/:y', async request => {
     // Récupérer les paramètres
     const x = parseFloat(request.params.x)
     const y = parseFloat(request.params.y)
@@ -50,7 +56,7 @@ export default async function calculatriceRoutes(app: FastifyInstance) {
   })
 
   // Création d'une route permettant de soustraire 2 nombres
-  app.get<CalcRoute>('/calc/div/:x/:y', (request, response) => {
+  app.get<CalcRoute>('/calc/div/:x/:y', async (request, response) => {
     // Récupérer les paramètres
     const x = parseFloat(request.params.x)
     const y = parseFloat(request.params.y)
@@ -73,7 +79,7 @@ export default async function calculatriceRoutes(app: FastifyInstance) {
     }
   })
 
-  app.post<CalculateRoute>('/calculate', (request, response) => {
+  app.post<CalculateRoute>('/calculate', async (request, response) => {
     // Récupére l'opération
     const operation = request.headers.operation
     // ON récupére x et y
