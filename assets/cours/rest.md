@@ -8,6 +8,8 @@ Ces api rest sont basé sur le protocole HTTP. Elle s'organise en suivant des r�
 
 Les api rest possède des `Resources`, ces "resources" représente la donnée de votre application. Elles sont généralement présenté et formatté en utilisant le format JSON.
 
+> C'est un peu comme un table d'une base de données, mais en JSON !
+
 En REST chaque resource représente de la données.
 
 Exemple :
@@ -58,6 +60,8 @@ http://shoes.me/shoes/10/comments/4/user (Document)
 > http://shoes.me/connected/user (Document, Invalide ....)
 > http://shoes.me/connected (INvalide, ni à un document, ni à une collection)
 > ```
+>
+> Généralement, lorsque l'on as un verbe dans notre resources ... C'est mauvais signe.
 
 ## Les actions
 
