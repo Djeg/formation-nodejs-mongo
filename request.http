@@ -41,4 +41,32 @@ GET http://127.0.0.1:5353/calculatrice/results
 
 ###
 
-GET http://127.0.0.1:5353/testmongo
+GET http://127.0.0.1:5353/testmongoo
+
+###
+
+POST http://127.0.0.1:5353/pizzas
+Content-Type: application/json
+
+{
+  "name": "calzone",
+  "price": 13.5,
+  "description": "Très bonne pizza !"
+}
+
+###
+
+PATCH http://127.0.0.1:5353/pizzas/6401f02f31547961300ec47f
+Content-Type: application/json
+
+{
+  "price": 8.9
+}
+
+###
+
+DELETE http://127.0.0.1:5353/pizzas/6401f02f31547961300ec47f
+
+###
+
+GET http://127.0.0.1:5353/pizzas

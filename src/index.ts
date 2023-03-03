@@ -2,6 +2,7 @@ import fastifyMongodb from '@fastify/mongodb'
 import fastify from 'fastify'
 import fastifyPlugin from 'fastify-plugin'
 import calculatriceRoutes from './routes/calculatrice'
+import pizzeriaRoutes from './routes/pizzeria'
 import testouilleRoutes from './routes/testouille'
 
 // Création d'une application (notre serveur logique HTTP)
@@ -35,6 +36,8 @@ app.register(fastifyMongodb, {
 app.register(fastifyPlugin(testouilleRoutes))
 // Enregistrement du plugin de calculatrice
 app.register(fastifyPlugin(calculatriceRoutes))
+// Enregistrement du plugin pizzeria
+app.register(fastifyPlugin(pizzeriaRoutes))
 
 // On écoute une porte de notre ordinateur
 app.listen({ port: process.env.PORT as any, host: process.env.HOST }, error => {

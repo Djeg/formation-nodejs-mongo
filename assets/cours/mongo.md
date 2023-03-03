@@ -172,7 +172,7 @@ const documents = await app.mongo.db?
   .collection<PizzaType>('pizzas')
   .find()
   .limit(2)
-  .offset(3)
+  .skip(3)
   .toArray()
 ```
 
