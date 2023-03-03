@@ -20,6 +20,7 @@ export default async function calculatriceRoutes(app: FastifyInstance) {
 
     // Enreigistré ce « result » dans la collection `calulcalatrice` de
     // votre mongodb !
+    await app.mongo.db?.collection('calculatrices').insertOne(result)
 
     // On retourne l'objet de résultat
     return result
@@ -32,12 +33,18 @@ export default async function calculatriceRoutes(app: FastifyInstance) {
     const y = parseFloat(request.params.y)
 
     // On retourne l'objet de résultat
-    return {
+    const result = {
       result: x - y,
       x: x,
       y: y,
       operation: 'sub',
     }
+
+    // On enregistre dans mongodb
+    await app.mongo.db?.collection('calculatrices').insertOne(result)
+
+    // On retourne le résultat
+    return result
   })
 
   // Création d'une route permettant de soustraire 2 nombres
@@ -47,12 +54,18 @@ export default async function calculatriceRoutes(app: FastifyInstance) {
     const y = parseFloat(request.params.y)
 
     // On retourne l'objet de résultat
-    return {
+    const result = {
       result: x * y,
       x: x,
       y: y,
       operation: 'mul',
     }
+
+    // On enregistre dans mongodb
+    await app.mongo.db?.collection('calculatrices').insertOne(result)
+
+    // On retourne le résultat
+    return result
   })
 
   // Création d'une route permettant de soustraire 2 nombres
@@ -71,12 +84,18 @@ export default async function calculatriceRoutes(app: FastifyInstance) {
     }
 
     // On retourne l'objet de résultat
-    return {
+    const result = {
       result: x / y,
       x: x,
       y: y,
       operation: 'div',
     }
+
+    // On enregistre dans mongodb
+    await app.mongo.db?.collection('calculatrices').insertOne(result)
+
+    // On retourne le résultat
+    return result
   })
 
   app.post<CalculateRoute>('/calculate', async (request, response) => {
@@ -85,9 +104,10 @@ export default async function calculatriceRoutes(app: FastifyInstance) {
     // ON récupére x et y
     const x = request.body.x
     const y = request.body.y
+    let result: any = null
 
     if (operation === 'add') {
-      return {
+      result = {
         result: x + y,
         x: x,
         y: y,
@@ -96,7 +116,7 @@ export default async function calculatriceRoutes(app: FastifyInstance) {
     }
 
     if (operation === 'sub') {
-      return {
+      result = {
         result: x - y,
         x: x,
         y: y,
@@ -105,7 +125,7 @@ export default async function calculatriceRoutes(app: FastifyInstance) {
     }
 
     if (operation === 'mul') {
-      return {
+      result = {
         result: x * y,
         x: x,
         y: y,
@@ -123,7 +143,7 @@ export default async function calculatriceRoutes(app: FastifyInstance) {
         }
       }
 
-      return {
+      result = {
         result: x / y,
         x: x,
         y: y,
@@ -131,12 +151,28 @@ export default async function calculatriceRoutes(app: FastifyInstance) {
       }
     }
 
-    response.code(400)
+    if (!result) {
+      response.code(400)
 
-    return {
-      error: 'invalide operation',
-      message: `Je ne connais l'opération ${operation} :/`,
+      return {
+        error: 'invalide operation',
+        message: `Je ne connais l'opération ${operation} :/`,
+      }
     }
+
+    await app.mongo.db?.collection('calculatrices').insertOne(result)
+
+    return result
+  })
+
+  // Affiche tout les résultats enregistré dans la base de données
+  app.get('/calculatrice/results', async () => {
+    const collection = await app.mongo.db
+      ?.collection('calculatrices')
+      .find()
+      .toArray()
+
+    return collection
   })
 }
 

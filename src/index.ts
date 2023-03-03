@@ -26,9 +26,9 @@ app.get('/testmongo', async () => {
 // enregistrement du plugin mongo db
 app.register(fastifyMongodb, {
   // url de connexion à la base de données
-  url: 'mongodb://root:root@localhost/?retryWrites=true&w=majority',
+  url: process.env.MONGO_URL,
   // Nom lire représentant la base de données
-  database: 'test',
+  database: process.env.MONGO_DATABASE,
 })
 
 // enregistremet de mon premier plugin
